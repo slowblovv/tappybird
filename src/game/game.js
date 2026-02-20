@@ -26,6 +26,21 @@ const config = {
   },
 };
 
-const start = () => new Phaser.Game(config);
+// запуск игры — robust version
+const start = () => {
+  try {
+    console.log('Starting Phaser...');
+    new Phaser.Game(config);
+    console.log('Phaser started');
+  } catch (err) {
+    console.error('Phaser failed to start:', err);
+  }
+};
 
-window.addEventListener('load', start);
+// Если документ уже загружен — запускаем сразу, иначе ждём DOMContentLoaded
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  // already ready
+  start();
+} else {
+  window.addEventListener('DOMContentLoaded', start, { once: true });
+}
