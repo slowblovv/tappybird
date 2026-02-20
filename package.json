@@ -1,0 +1,55 @@
+{
+  "name": "flappy-bird",
+  "version": "1.0.0",
+  "description": "FlappyBird clone",
+  "private": true,
+  "scripts": {
+    "start": "serve public",
+    "dev": "webpack serve --open",
+    "build": "webpack",
+    "webhint": "hint .",
+    "stylelint": "stylelint \"**/*.{css,scss}\"",
+    "eslint": "eslint .",
+    "lint": "npm run webhint && npm run stylelint && npm run eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usmansbk/flappy-bird.git"
+  },
+  "keywords": [
+    "webpack",
+    "js",
+    "es6",
+    "es2015",
+    "phaser"
+  ],
+  "author": "Babakolo Usman Suleiman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/usmansbk/flappy-bird/issues"
+  },
+  "homepage": "https://github.com/usmansbk/flappy-bird#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+    "babel-eslint": "^10.1.0",
+    "css-loader": "^5.2.6",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "hint": "^6.1.4",
+    "html-webpack-plugin": "^5.3.2",
+    "style-loader": "^3.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.19.0",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "phaser": "3.55.2",
+    "phaser3-webfont-loader": "^1.0.0",
+    "serve": "^14.2.1"
+  }
+}
