@@ -4,8 +4,11 @@ import GameScene from './scenes/Game.js';
 import PreloadScene from './scenes/Preload.js';
 import './game.css';
 
+console.log('game.js loaded'); // <- модуль загружен (должно появиться в консоли)
+
 const config = {
   type: Phaser.AUTO,
+  parent: 'game',            // <- явно указываем контейнер
   autoCenter: true,
   width: 320,
   height: 600,
@@ -26,7 +29,6 @@ const config = {
   },
 };
 
-// запуск игры — robust version
 const start = () => {
   try {
     console.log('Starting Phaser...');
@@ -37,9 +39,8 @@ const start = () => {
   }
 };
 
-// Если документ уже загружен — запускаем сразу, иначе ждём DOMContentLoaded
+// Надёжный запуск: если DOM уже готов — запускаем сразу, иначе ждём
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  // already ready
   start();
 } else {
   window.addEventListener('DOMContentLoaded', start, { once: true });
