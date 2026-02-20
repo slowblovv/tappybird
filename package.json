@@ -48,6 +48,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@telegram-apps/sdk": "^3.11.8",
     "phaser": "3.55.2",
     "phaser3-webfont-loader": "^1.0.0",
     "serve": "^14.2.1"
