@@ -4,11 +4,221 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
     <title>TappyBird</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body class="root">
     <div id="game"></div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-btn" data-screen="friends">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Друзья</span>
+      </button>
+      <button class="nav-btn" data-screen="leaderboard">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-label">Лидеры</span>
+      </button>
+      <button class="nav-btn" data-screen="tasks">
+        <span class="nav-icon">✅</span>
+        <span class="nav-label">Задания</span>
+      </button>
+      <button class="nav-btn" data-screen="market">
+        <span class="nav-icon">🛒</span>
+        <span class="nav-label">Маркет</span>
+      </button>
+    </nav>
+
+    <!-- Screens -->
+    <div class="screen" id="screen-friends">
+      <div class="screen-header">
+        <button class="screen-close">✕</button>
+        <h2>Друзья</h2>
+      </div>
+      <div class="screen-body">
+        <div class="invite-box">
+          <div class="invite-icon">🔗</div>
+          <p>Пригласи друзей и получай бонусы!</p>
+          <button class="action-btn">Пригласить друга</button>
+        </div>
+        <div class="friends-list">
+          <div class="friend-item">
+            <div class="friend-avatar">🐦</div>
+            <div class="friend-info">
+              <span class="friend-name">Alex</span>
+              <span class="friend-score">Рекорд: 42</span>
+            </div>
+            <span class="friend-rank">#1</span>
+          </div>
+          <div class="friend-item">
+            <div class="friend-avatar">🦅</div>
+            <div class="friend-info">
+              <span class="friend-name">Maria</span>
+              <span class="friend-score">Рекорд: 31</span>
+            </div>
+            <span class="friend-rank">#2</span>
+          </div>
+          <div class="friend-item">
+            <div class="friend-avatar">🦜</div>
+            <div class="friend-info">
+              <span class="friend-name">Ivan</span>
+              <span class="friend-score">Рекорд: 27</span>
+            </div>
+            <span class="friend-rank">#3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-leaderboard">
+      <div class="screen-header">
+        <button class="screen-close">✕</button>
+        <h2>Лидерборд</h2>
+      </div>
+      <div class="screen-body">
+        <div class="leader-item gold">
+          <span class="leader-rank">🥇</span>
+          <div class="leader-avatar">🐦</div>
+          <div class="leader-info">
+            <span class="leader-name">ProBird99</span>
+            <span class="leader-score">999 очков</span>
+          </div>
+        </div>
+        <div class="leader-item silver">
+          <span class="leader-rank">🥈</span>
+          <div class="leader-avatar">🦅</div>
+          <div class="leader-info">
+            <span class="leader-name">FlappyKing</span>
+            <span class="leader-score">876 очков</span>
+          </div>
+        </div>
+        <div class="leader-item bronze">
+          <span class="leader-rank">🥉</span>
+          <div class="leader-avatar">🦜</div>
+          <div class="leader-info">
+            <span class="leader-name">TapMaster</span>
+            <span class="leader-score">754 очков</span>
+          </div>
+        </div>
+        <div class="leader-item">
+          <span class="leader-rank">4</span>
+          <div class="leader-avatar">🐧</div>
+          <div class="leader-info">
+            <span class="leader-name">BirdBrain</span>
+            <span class="leader-score">631 очков</span>
+          </div>
+        </div>
+        <div class="leader-item">
+          <span class="leader-rank">5</span>
+          <div class="leader-avatar">🦆</div>
+          <div class="leader-info">
+            <span class="leader-name">QuackQuack</span>
+            <span class="leader-score">589 очков</span>
+          </div>
+        </div>
+        <div class="leader-divider">— Ваше место —</div>
+        <div class="leader-item highlight">
+          <span class="leader-rank">42</span>
+          <div class="leader-avatar">😎</div>
+          <div class="leader-info">
+            <span class="leader-name">Вы</span>
+            <span class="leader-score">124 очков</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-tasks">
+      <div class="screen-header">
+        <button class="screen-close">✕</button>
+        <h2>Задания</h2>
+      </div>
+      <div class="screen-body">
+        <div class="tasks-section-title">Ежедневные</div>
+        <div class="task-item">
+          <div class="task-icon">🎮</div>
+          <div class="task-info">
+            <span class="task-name">Сыграй 3 раза</span>
+            <div class="task-progress-bar"><div class="task-progress-fill" style="width: 66%"></div></div>
+            <span class="task-progress-text">2/3</span>
+          </div>
+          <span class="task-reward">+50 🪙</span>
+        </div>
+        <div class="task-item">
+          <div class="task-icon">⭐</div>
+          <div class="task-info">
+            <span class="task-name">Набери 10 очков</span>
+            <div class="task-progress-bar"><div class="task-progress-fill" style="width: 100%"></div></div>
+            <span class="task-progress-text">Выполнено!</span>
+          </div>
+          <button class="task-claim">Забрать</button>
+        </div>
+        <div class="tasks-section-title">Особые</div>
+        <div class="task-item">
+          <div class="task-icon">🤝</div>
+          <div class="task-info">
+            <span class="task-name">Пригласи друга</span>
+            <div class="task-progress-bar"><div class="task-progress-fill" style="width: 0%"></div></div>
+            <span class="task-progress-text">0/1</span>
+          </div>
+          <span class="task-reward">+200 🪙</span>
+        </div>
+        <div class="task-item">
+          <div class="task-icon">📢</div>
+          <div class="task-info">
+            <span class="task-name">Подпишись на канал</span>
+            <div class="task-progress-bar"><div class="task-progress-fill" style="width: 0%"></div></div>
+            <span class="task-progress-text">0/1</span>
+          </div>
+          <span class="task-reward">+100 🪙</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-market">
+      <div class="screen-header">
+        <button class="screen-close">✕</button>
+        <h2>Маркет</h2>
+      </div>
+      <div class="screen-body">
+        <div class="coins-balance">
+          <span>💰 Ваш баланс:</span>
+          <span class="coins-amount">350 🪙</span>
+        </div>
+        <div class="market-grid">
+          <div class="market-item">
+            <div class="market-preview">🐦</div>
+            <span class="market-name">Классик</span>
+            <span class="market-badge equipped">Надет</span>
+          </div>
+          <div class="market-item locked">
+            <div class="market-preview">🦅</div>
+            <span class="market-name">Орёл</span>
+            <span class="market-price">500 🪙</span>
+          </div>
+          <div class="market-item locked">
+            <div class="market-preview">🤖</div>
+            <span class="market-name">Робот</span>
+            <span class="market-price">750 🪙</span>
+          </div>
+          <div class="market-item locked">
+            <div class="market-preview">👻</div>
+            <span class="market-name">Призрак</span>
+            <span class="market-price">1000 🪙</span>
+          </div>
+          <div class="market-item locked">
+            <div class="market-preview">🐉</div>
+            <span class="market-name">Дракон</span>
+            <span class="market-price">2000 🪙</span>
+          </div>
+          <div class="market-item locked">
+            <div class="market-preview">💎</div>
+            <span class="market-name">Кристалл</span>
+            <span class="market-price">5000 🪙</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
