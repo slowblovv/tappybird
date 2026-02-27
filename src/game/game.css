@@ -330,3 +330,9 @@ html, body {
   padding: 3px 8px;
   border-radius: 10px;
 }
+
+.nav-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
