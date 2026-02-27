@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
-import { postEvent } from '@telegram-apps/sdk';
 
 export default function App() {
   useEffect(() => {
-    try {
-      // Вызываем сразу — без async, без проверок
-      postEvent('web_app_expand');
-      postEvent('web_app_request_fullscreen');
-    } catch (err) {
-      console.error('TG init error', err);
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+      // requestFullscreen появился в v8.0
+      if (typeof tg.requestFullscreen === 'function') {
+        tg.requestFullscreen();
+      }
+      // Отключаем свайп вниз чтобы не закрывалось
+      tg.disableVerticalSwipes?.();
     }
   }, []);
 
