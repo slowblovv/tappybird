@@ -8,6 +8,7 @@ import IconFriends from './assets/icons/icon-friends.png';
 import IconLeaderboard from './assets/icons/icon-leaderboard.png';
 import IconTasks from './assets/icons/icon-tasks.png';
 import IconMarket from './assets/icons/icon-market.png';
+import IconPlay from './assets/icons/icon-play.png';
 
 console.log('game.js loaded');
 
