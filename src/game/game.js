@@ -65,3 +65,42 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 } else {
   window.addEventListener('DOMContentLoaded', start, { once: true });
 }
+
+// Bottom nav logic
+document.addEventListener('DOMContentLoaded', () => {
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const screens = document.querySelectorAll('.screen');
+  const closeBtns = document.querySelectorAll('.screen-close');
+  let activeScreen = null;
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const screenId = 'screen-' + btn.dataset.screen;
+      const screen = document.getElementById(screenId);
+
+      if (activeScreen === screenId) {
+        // Закрываем если тыкнули снова
+        screen.classList.remove('open');
+        btn.classList.remove('active');
+        activeScreen = null;
+        return;
+      }
+
+      // Закрываем предыдущий
+      screens.forEach(s => s.classList.remove('open'));
+      navBtns.forEach(b => b.classList.remove('active'));
+
+      screen.classList.add('open');
+      btn.classList.add('active');
+      activeScreen = screenId;
+    });
+  });
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      screens.forEach(s => s.classList.remove('open'));
+      navBtns.forEach(b => b.classList.remove('active'));
+      activeScreen = null;
+    });
+  });
+});
