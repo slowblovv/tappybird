@@ -5,6 +5,12 @@ export default function App() {
   useEffect(() => {
     async function initTg() {
       try {
+        // Сразу разворачиваем через нативный Telegram WebApp API
+        if (window.Telegram?.WebApp) {
+          window.Telegram.WebApp.ready();
+          window.Telegram.WebApp.expand();
+        }
+
         if (await isTMA()) {
           init();
 
