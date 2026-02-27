@@ -3,21 +3,14 @@ import { WebFontLoaderPlugin } from 'phaser3-webfont-loader';
 import GameScene from './scenes/Game.js';
 import PreloadScene from './scenes/Preload.js';
 import './game.css';
+
 import IconFriends from './assets/icons/icon-friends.png';
 import IconLeaderboard from './assets/icons/icon-leaderboard.png';
 import IconTasks from './assets/icons/icon-tasks.png';
 import IconMarket from './assets/icons/icon-market.png';
 
-function setNavIcons() {
-  document.querySelector('[data-screen="friends"] .nav-icon').innerHTML = `<img src="${IconFriends}" alt="friends">`;
-  document.querySelector('[data-screen="leaderboard"] .nav-icon').innerHTML = `<img src="${IconLeaderboard}" alt="leaderboard">`;
-  document.querySelector('[data-screen="tasks"] .nav-icon').innerHTML = `<img src="${IconTasks}" alt="tasks">`;
-  document.querySelector('[data-screen="market"] .nav-icon').innerHTML = `<img src="${IconMarket}" alt="market">`;
-}
+console.log('game.js loaded');
 
-console.log('game.js loaded'); // должен появиться в консоли при выполнении скрипта
-
-// Конфиг Phaser (оставляем выше start, чтобы всё было очевидно)
 const config = {
   type: Phaser.AUTO,
   parent: 'game',
@@ -44,7 +37,6 @@ const config = {
   },
 };
 
-// fallback: создаём контейнер, если его нет в HTML
 function ensureGameContainer() {
   if (!document.getElementById('game')) {
     const el = document.createElement('div');
@@ -52,33 +44,34 @@ function ensureGameContainer() {
     el.style.width = '100%';
     el.style.height = '100%';
     document.body.appendChild(el);
-    console.log('Injected #game container via JS');
-  } else {
-    console.log('#game container already exists');
   }
 }
 
-// ЕДИНСТВЕННАЯ функция start — запускает Phaser
+function setNavIcons() {
+  document.querySelector('[data-screen="friends"] .nav-icon').innerHTML = `<img src="${IconFriends}" alt="friends">`;
+  document.querySelector('[data-screen="leaderboard"] .nav-icon').innerHTML = `<img src="${IconLeaderboard}" alt="leaderboard">`;
+  document.querySelector('[data-screen="tasks"] .nav-icon').innerHTML = `<img src="${IconTasks}" alt="tasks">`;
+  document.querySelector('[data-screen="market"] .nav-icon').innerHTML = `<img src="${IconMarket}" alt="market">`;
+}
+
 const start = () => {
   try {
-    console.log('Starting Phaser...');
     ensureGameContainer();
     new Phaser.Game(config);
-    console.log('Phaser started');
   } catch (err) {
     console.error('Phaser failed to start:', err);
   }
 };
 
-// Надёжный запуск: если DOM уже готов — запускаем сразу, иначе ждём
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
   start();
 } else {
   window.addEventListener('DOMContentLoaded', start, { once: true });
 }
 
-// Bottom nav logic
 document.addEventListener('DOMContentLoaded', () => {
+  setNavIcons();
+
   const navBtns = document.querySelectorAll('.nav-btn');
   const screens = document.querySelectorAll('.screen');
   const closeBtns = document.querySelectorAll('.screen-close');
@@ -90,14 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const screen = document.getElementById(screenId);
 
       if (activeScreen === screenId) {
-        // Закрываем если тыкнули снова
         screen.classList.remove('open');
         btn.classList.remove('active');
         activeScreen = null;
         return;
       }
 
-      // Закрываем предыдущий
       screens.forEach(s => s.classList.remove('open'));
       navBtns.forEach(b => b.classList.remove('active'));
 
