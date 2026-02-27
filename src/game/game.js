@@ -9,11 +9,14 @@ console.log('game.js loaded'); // должен появиться в консо�
 // Конфиг Phaser (оставляем выше start, чтобы всё было очевидно)
 const config = {
   type: Phaser.AUTO,
-  parent: 'game',      // явно указываем контейнер
-  autoCenter: true,
-  width: 320,
-  height: 600,
+  parent: 'game',
   backgroundColor: '#1e272e',
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    width: 320,
+    height: 600,
+  },
   physics: {
     default: 'arcade',
     arcade: {
@@ -35,9 +38,8 @@ function ensureGameContainer() {
   if (!document.getElementById('game')) {
     const el = document.createElement('div');
     el.id = 'game';
-    el.style.width = '320px';
-    el.style.height = '600px';
-    el.style.margin = '0 auto';
+    el.style.width = '100%';
+    el.style.height = '100%';
     document.body.appendChild(el);
     console.log('Injected #game container via JS');
   } else {
