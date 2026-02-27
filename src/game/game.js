@@ -53,6 +53,7 @@ function setNavIcons() {
   document.querySelector('[data-screen="leaderboard"] .nav-icon').innerHTML = `<img src="${IconLeaderboard}" alt="leaderboard">`;
   document.querySelector('[data-screen="tasks"] .nav-icon').innerHTML = `<img src="${IconTasks}" alt="tasks">`;
   document.querySelector('[data-screen="market"] .nav-icon').innerHTML = `<img src="${IconMarket}" alt="market">`;
+  document.querySelector('.nav-icon-play').innerHTML = `<img src="${IconPlay}" alt="play">`;
 }
 
 const start = () => {
@@ -78,7 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtns = document.querySelectorAll('.screen-close');
   let activeScreen = null;
 
+  // Кнопка Play — закрывает все экраны, возвращает к игре
+  document.getElementById('btn-play').addEventListener('click', () => {
+    screens.forEach(s => s.classList.remove('open'));
+    navBtns.forEach(b => b.classList.remove('active'));
+    activeScreen = null;
+  });
+
   navBtns.forEach(btn => {
+    if (!btn.dataset.screen) return; // пропускаем кнопку Play
+
     btn.addEventListener('click', () => {
       const screenId = 'screen-' + btn.dataset.screen;
       const screen = document.getElementById(screenId);
