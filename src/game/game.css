@@ -336,3 +336,30 @@ html, body {
   height: 28px;
   object-fit: contain;
 }
+
+/* Центральная кнопка играть */
+.nav-btn-play {
+  position: relative;
+}
+
+.nav-icon-play {
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin-top: -24px; /* поднимаем над навбаром */
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+}
+
+.nav-icon-play img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-btn-play .nav-label {
+  color: #f0c040;
+  font-weight: 700;
+}
