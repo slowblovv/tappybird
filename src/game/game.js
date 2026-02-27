@@ -3,6 +3,17 @@ import { WebFontLoaderPlugin } from 'phaser3-webfont-loader';
 import GameScene from './scenes/Game.js';
 import PreloadScene from './scenes/Preload.js';
 import './game.css';
+import IconFriends from './assets/icons/icon-friends.png';
+import IconLeaderboard from './assets/icons/icon-leaderboard.png';
+import IconTasks from './assets/icons/icon-tasks.png';
+import IconMarket from './assets/icons/icon-market.png';
+
+function setNavIcons() {
+  document.querySelector('[data-screen="friends"] .nav-icon').innerHTML = `<img src="${IconFriends}" alt="friends">`;
+  document.querySelector('[data-screen="leaderboard"] .nav-icon').innerHTML = `<img src="${IconLeaderboard}" alt="leaderboard">`;
+  document.querySelector('[data-screen="tasks"] .nav-icon').innerHTML = `<img src="${IconTasks}" alt="tasks">`;
+  document.querySelector('[data-screen="market"] .nav-icon').innerHTML = `<img src="${IconMarket}" alt="market">`;
+}
 
 console.log('game.js loaded'); // должен появиться в консоли при выполнении скрипта
 
